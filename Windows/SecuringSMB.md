@@ -18,22 +18,22 @@
    
  # How to Secure SMB via Active Directory
    
- **Step 1 - Go to "Group Policy Managment" and continue to your Domain -> "Group Polcy Objects" -> Right Click Default Domain policy -> Click "Edit" 
+ **Step 1** - Go to "Group Policy Managment" and continue to your Domain -> "Group Polcy Objects" -> Right Click Default Domain policy -> Click "Edit" 
    
- **Step 2 - In "Computer Configuration" -> "Preferences" -> "Windows Settings" -> "Registry", create a new rule(Once pushed out, this will send to all windows servers)
+ **Step 2** - In "Computer Configuration" -> "Preferences" -> "Windows Settings" -> "Registry", create a new rule(Once pushed out, this will send to all windows servers)
 
- **Step 3 - Right Click, then Click 'New" -> "Registry Item" 
+ **Step 3** - Right Click, then Click 'New" -> "Registry Item" 
    
- **Step 4 - Change "Update' Action to "Create" and in Key Path, typ, "SYSTEM\CurrentControlSet\Services\Lanmanserver\Parameters" 
+ **Step 4** - Change "Update' Action to "Create" and in Key Path, typ, "SYSTEM\CurrentControlSet\Services\Lanmanserver\Parameters" 
    
- **Step 5 - In Value Name, Type, "SMB1" and change Value Type to "REG_DWORD" and in Value data, put "0"
+ **Step 5** - In Value Name, Type, "SMB1" and change Value Type to "REG_DWORD" and in Value data, put "0"
    
- **Step 6 - Click "OK"
+ **Step 6** - Click "OK"
    
- **Step 7 - To Disable SMBv1 from the local machine, repeat steps 4-6 exept keep Action as "Update" and Key path is "SYSTEM\CurrentControlSet\Services\mrxsmb10" 
+ **Step 7** - To Disable SMBv1 from the local machine, repeat steps 4-6 exept keep Action as "Update" and Key path is "SYSTEM\CurrentControlSet\Services\mrxsmb10" 
             Set Valu name to "4" -> Vlaue Type to "REG_DWORD" and Click "OK" 
    
- **Step 8 - Make another registry action -> set Action to "Replace" -> Key path "SYSTEM\CurrentControlSet\Services\LanmanWorkstation"
+ **Step 8** - Make another registry action -> set Action to "Replace" -> Key path "SYSTEM\CurrentControlSet\Services\LanmanWorkstation"
             Vlaue Name "DependOnService" -> Value type "REG_MULTI_SZ" -> Value data "Browser "
                                                                                     "MRxSmb20" 
                                                                                     "NSI     " Click "OK" 
@@ -43,14 +43,14 @@
 
 # Setup SMB Signing (This Security Policy will make signatures for all SMB traffic and let any workstation/Server know if SMB traffic has been intercepted/ Manipulated)
 
- **Step 1 - In "Default Domain Policy / Policies / Winsows Settings / Security Settings / Local Policies / Security Options" 
+ **Step 1** - In "Default Domain Policy / Policies / Winsows Settings / Security Settings / Local Policies / Security Options" 
 
- **Step 2 - Double Click "Microsoft Network Client: Digitally sign communications [always]" -> Click "Define this setting" -> 'Enabled" -> "Apply" 
+ **Step 2** - Double Click "Microsoft Network Client: Digitally sign communications [always]" -> Click "Define this setting" -> 'Enabled" -> "Apply" 
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       
- **Step 3 - Do the exact same thing twice. There are 2 differnet security policies with the same name as above. One is Servers and the other in Clients.
+ **Step 3** - Do the exact same thing twice. There are 2 differnet security policies with the same name as above. One is Servers and the other in Clients.
                                                                                     
    # Force the New Group Policy out to all Netowrked Devices  
    
- **Step 1 - Go to "Group Policy Manager' -> "Your Domain" -> "Starter GPO's" 
+ **Step 1** - Go to "Group Policy Manager' -> "Your Domain" -> "Starter GPO's" 
 
- **Step 2 - 
+ **Step 2** - 
