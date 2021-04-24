@@ -19,6 +19,7 @@ like, (**Bold**, *Italisizing*, and [Links](https://guides.github.com/features/m
 
 **Adding Links**
 - When adding a link to a website or another file in the GitHub, use **square brackets** to encumpass your hyperlink name and use **parentheses** "()" to encompass the actual **URL** itself.
+ 
  **For more information, go to the "*Links*" link above at it will direct you to the Markdown formatting website**
 # Securing Networks Repository Article Template
 
