@@ -2,12 +2,12 @@
 
 
 
-What is SMB? 
+# What is SMB? 
 - SMB, or (Server Message Block protocol) is a network file sharing protocol that allows applications on a computer to read and write to files and to request services 
   from server programs in a computer network. Not only does SMB allow computers to share files, but it also enables computers to share printers and even serial ports 
   from other computers within the network.  
   
-History of SMB 
+# History of SMB 
  - In 2017, the imfanous WannaCry Ransomware was a exploit for SMB version 1, infected hundreds of thousands of devices and encrypted their data. In order
    for companies to get their data back, they had to pay a ransom in Bitcoin.Originally created by the NSA for snooping, EternalBlue was the tool used to carryout this 
    attack that made the threat actors over 100,000 dollars in bitcoin at the time (Just imagine if they saved all that until now). As a server admin, make sure to 
