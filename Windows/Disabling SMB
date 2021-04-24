@@ -12,7 +12,9 @@ History of SMB
    for companies to get their data back, they had to pay a ransom in Bitcoin.Originally created by the NSA for snooping, EternalBlue was the tool used to carryout this 
    attack that made the threat actors over 100,000 dollars in bitcoin at the time (Just imagine if they saved all that until now). As a server admin, make sure to 
    disable SMBv1 and SMBv2 as they are not the latest version. SMBv3 is the latest and most secure version of SMB and currently, there are no known vulnerabilities 
-   reported or exploited. 
+   reported or exploited.  
+   
+   *TO DEACTIVATE ALL SMB TRAFFIC FOR ULTAMITE SECURITY, MAKE A FIREWALL RULE DENYING PORTS 139 AND 445*
    
    How to Secure SMB via Active Directory
    
