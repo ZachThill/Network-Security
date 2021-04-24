@@ -24,7 +24,7 @@ like, (**Bold**, *Italisizing*, and [Links](https://guides.github.com/features/m
 # Securing Networks Repository Article Template
 
  # Title 
- **Authored by: First Last (Required) - Current IT Position (Optional)** 
+ **Authored by: First Last (Recommended) - Current IT Position (Optional)** 
  
  **What is (Topic)** 
  - Information Information Information... 
