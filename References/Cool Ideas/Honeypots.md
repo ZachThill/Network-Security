@@ -1,4 +1,4 @@
-# Referneces for Honeypot Information 
+# Refereneces for Honeypot Information 
 
 **Websites** 
 
