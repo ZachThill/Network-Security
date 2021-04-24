@@ -12,7 +12,25 @@ like, (**Bold**, *Italisizing*, and [Links](https://guides.github.com/features/m
 **Making Bold Words** 
  - When you want a string or a single word to be **BOLD**, type two astrics before and after the string or word. 
 
-**Making ***Italics*** 
- - When you want to ***Italisize*** a string or word, type one astrics before and after the string or word. 
+**Making** ***Italics***
+ - When you want to ***Italisize*** a string or word, type one astrics before and after the string or word.  
+ **NOTE**, You can add both bold and italics syntax to accomplish both.
 
+**Adding Links**
+- When adding a link to a website or another file in the GitHub, use **square brackets** to encumpass your hyperlink name and use **parentheses** "()" to encompass the actual **URL** itself.
  **For more information, go to the "*Links*" link above at it will direct you to the Markdown formatting website**
+# Securing Networks Repository Article Template
+
+ # Title 
+ **Authored by: First Last - Current IT Position (Optional)** 
+ 
+ **What is (Topic)** 
+ - Information Information Information... 
+ 
+ **(Why Bother / Topic History)** 
+ - Information Information Information...  
+ 
+ **Actual Implementaion of Topic** 
+ - **Step 1** Information Information Information...  
+ - **Step 2** Information Information Information... 
+ - **Step 3 ...**
