@@ -7,7 +7,7 @@
  - Our mission while developing this reprository is to create acurate and informative articles that can be understood by anyone no matter how technical their background is.
    This reprositiry was made in the hopes that anyone wanting a tutorial into Cyber Security can easily access all articles and the sources used to make them. 
    
-# Want to be a Contibutor? 
+# Want to be a Contributor? 
  - Email me @ **zach.thill@comcast.net** to become a GitHub Contributor 
 
 # Rules for Contributors  
