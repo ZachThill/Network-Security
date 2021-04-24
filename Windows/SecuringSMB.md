@@ -1,5 +1,5 @@
 # Securing SMBv1/SMBv2/SMBv3 for Windows servers 
-**Authored by Zachary Thill - Student Project Leader @ RRCC**
+**Authored by Zachary Thill - IT Student Project Leader @ RRCC**
 
 
 # What is SMB? # 
