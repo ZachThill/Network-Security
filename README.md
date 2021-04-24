@@ -15,7 +15,7 @@ Fisrt of all, thank you so much for becoming a contributor and creating articles
 responsibility. Please follow the rules below when becoming a contibuter.
 
 - **Follow Organizational Structure and Naming Scheme** - When making articles and new directories, follow the pre existing setup for the GitHub. If unsure about how to create
- articles, go to -> "Article Creation Template.md" in the "Contributors" Directory. 
+ articles, go to -> "Article Creation Template.md" in the "**Contributors**" Directory. 
  **FAILURE to comply to GitHub standards will result in termination of Contibutor Status.**
  
 - **Complete All Work** - When creating articles, please make sure that you complete the work to a point where with your explanation, you could complete the task yourself. 
