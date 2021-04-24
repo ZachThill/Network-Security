@@ -1,4 +1,4 @@
-#Disabling SMBv1/SMBv2/SMBv3 from Windows servers 
+# Securing SMBv1/SMBv2/SMBv3 for Windows servers 
 
 
 
