@@ -1,4 +1,4 @@
-# Implamenting Port Spoofing 
+# Implementing Port Spoofing 
 
 # What is Port Spoofing? 
  - Port spoofing is a network spoof that relies on usage of non standard network TCP/UDP ports. There are lots of variations and details, but the basic idea is an 
