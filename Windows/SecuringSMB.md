@@ -41,7 +41,8 @@
  **YOU MUST REBOOT IN ORDER FOR THESE RULES TO TAKE EFFECT**
  
 
-# Setup SMB Signing (This Security Policy will make signatures for all SMB traffic and let any workstation/Server know if SMB traffic has been intercepted/ Manipulated)
+# Setup SMB Signing 
+**(This Security Policy will make signatures for all SMB traffic and let any workstation/Server know if SMB traffic has been Intercepted / Manipulated)**
 
  **Step 1** - In "Default Domain Policy / Policies / Winsows Settings / Security Settings / Local Policies / Security Options" 
 
@@ -49,7 +50,7 @@
                                                            
  **Step 3** - Do the exact same thing twice. There are 2 differnet security policies with the same name as above. One is Servers and the other in Clients.
                                                                                     
-   # Force the New Group Policy out to all Netowrked Devices  
+   # Force the New Group Policy out to all Networked Devices  
    
  **Step 1** - Go to "Group Policy Manager' **->** "Your Domain" **->** "Starter GPO's" 
 
