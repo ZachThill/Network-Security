@@ -1,0 +1,17 @@
+#Disabling SMBv1/SMBv2/SMBv3 from Windows servers 
+
+
+
+What is SMB? 
+- SMB, or (Server Message Block protocol) is a network file sharing protocol that allows applications on a computer to read and write to files and to request services 
+  from server programs in a computer network. Not only does SMB allow computers to share files, but it also enables computers to share printers and even serial ports 
+  from other computers within the network.  
+  
+  History of SMB 
+ - In 2017, the imfanous WannaCry Ransomware was a exploit for SMB version 1 that infected hundreds of thousands of devices and encrypted their data. In order
+   for companies to get their data back, they had to pay a ransom in Bitcoin. As a server admin, make sure to disable SMBv1 and SMBv2 as they are not the latest version.
+   SMBv3 is the latest and most secure version of SMB and currently, there are no known vulnerabilities reported or exploited. 
+   
+   How to Secure SMB 
+   
+   
