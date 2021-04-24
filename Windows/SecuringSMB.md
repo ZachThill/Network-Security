@@ -16,7 +16,7 @@
    
    **TO DEACTIVATE ALL SMB TRAFFIC FOR ULTAMITE SECURITY, MAKE A FIREWALL RULE DROPPING / DENYING PORTS 139 AND 445**
    
-   How to Secure SMB via Active Directory
+ # How to Secure SMB via Active Directory
    
    Step 1 - Go to "Group Policy Managment" and continue to your Domain -> "Group Polcy Objects" -> Right Click Default Domain policy -> Click "Edit" 
    
