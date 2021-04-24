@@ -21,6 +21,11 @@ responsibility. Please follow the rules below when becoming a contibuter.
 - **Complete All Work** - When creating articles, please make sure that you complete the work to a point where with your explanation, you could complete the task yourself. 
  **REMEMBER - Have the mentality that all users will be viewing this GitHub to learn skills they don't have previous knowllege of. Adiquetly explain what you're trying**
  **to teach** 
+
 - **Sign All Work** - When making an atricle, Make sure to specify the original owner, and all original authors of the atricle. Failure to comply will only result in you not        recieving credit for the article.
 
 **When adding to the Exsiting Article** - Make the title of your addition and make a signature underneath it followed by your added information. 
+
+ -  **Documentation and References** 
+ When Creating articles and doing research, document and save the URLs for all websites and YouTube videos used in the corresponding subdirectory in the "**Referneces**"
+ directory.
