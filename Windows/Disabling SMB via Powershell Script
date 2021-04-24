@@ -1,0 +1,151 @@
+# Disabling SMBv1 via Powershell
+
+
+#>
+param(
+  [Parameter(Mandatory = $false,
+                    Position = 0,
+                    ValueFromPipelineByPropertyName = $true)]
+  [Boolean]$DisableSMBv1=$true,
+ 
+  [Parameter(Mandatory = $false,
+                    Position = 1,
+                    ValueFromPipelineByPropertyName = $true)]
+  [String]$LogFile=""
+)
+ 
+#################################################################
+# Functions
+#################################################################
+ 
+# From http://www.jonathanmedd.net/2014/01/testing-for-admin-privileges-in-powershell.html
+function Test-IsAdmin {
+  ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+}
+ 
+function CheckSMBv1( `
+  [Boolean]$Win8OrHigher, `
+  [ref]$Msgs) {
+ 
+  if ($Win8OrHigher) {
+    # Windows 8/2012 or higher
+    $ReturnValue = (Get-SmbServerConfiguration).EnableSMB1Protocol
+    # Note that to update [ref] variables in a function, you must use the .Value property
+    $Msgs.Value += "Get-SmbServerConfiguration return value = $ReturnValue`n"
+    $SMBv1Found = ( $ReturnValue -eq "True")
+  } else {
+    # Windows 7/2008R2 or Vista/2008
+    # SMBv1 is enabled by default, so if registry value is missing or = 1, SMBv1 is enabled.
+    # Only if the registry key is present and = 0 is SMBv1 disabled.  
+    # Next line returns $null if registry key is missing, else returns value of "SMB1" (DWORD 0 or 1)
+    $ReturnValue = (Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -ErrorAction SilentlyContinue).SMB1
+    if ($ReturnValue -eq $null) {
+      $Msgs.Value += 'Registry value SMB1 is missing (default = 1)' + "`n"
+    } else {
+      $Msgs.Value += "Registry value SMB1 = $ReturnValue`n"
+    }
+    $SMBv1Found = ( $ReturnValue -ne 0 )
+  }
+ 
+  if ($SMBv1Found) { 
+    $Msgs.Value += "That means SMBv1 is ENabled on $env:computername`n"
+  } else {
+    $Msgs.Value += "That means SMBv1 is NOT enabled on $env:computername`n"
+  }
+   
+  $SMBv1Found # return $true if found
+}
+ 
+function DisableSMBv1( `
+  [Boolean]$Win8OrHigher, `
+  [ref]$Msgs) {
+ 
+  if ($Win8OrHigher) {
+    $Msgs.Value += "Disabling SMBv1 with Set-SmbServerConfiguration`n"
+    Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
+  } else {
+    $Msgs.Value += "Disabling SMBv1 by setting registry value SMB1 = 0`n"
+    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 -Force
+  }
+}
+ 
+#################################################################
+# Main code
+#################################################################
+ 
+[Boolean]$SMBv1Found = $false
+$ExitCode = 0
+$Msgs = ""
+ 
+# Cast $OSVersion as type [Version] so we can compare correctly 
+# when major version has two digits (Windows 10 >= 10.0.10240).
+[Version]$OSVersion = (Get-WmiObject -namespace "root\CIMV2" `
+  -Class win32_OperatingSystem -Property Version `
+  -ErrorAction SilentlyContinue -ErrorVariable CmdletErrors).Version
+ 
+# Gracefully handle WMI errors
+if ($CmdletErrors.Count -gt 0) {
+  $ExitCode = 1001
+  foreach ($CmdletError in $CmdletErrors) {
+    if ($CmdletError -is [System.Management.Automation.CmdletInvocationException]) {
+      # CmdletInvocationException has .Message property
+      $Msgs += $EventLogComputer + " - WMI OS check:  " + $CmdletError.Message + "`n"
+    }
+    else {
+      # ErrorRecord object has .Exception.Message property
+      $Msgs += $EventLogComputer + " - WMI OS check:  " + $CmdletError.Exception.Message + "`n"
+    }
+  }
+ 
+} else {
+ 
+  # WMI okay so we have $OSVersion
+ 
+  # Set version flag
+  if ($OSVersion -ge [Version]"6.2.0000") {
+    # Windows 8/2012 or higher
+    [Boolean]$Win8OrHigher = $true
+    $Msgs += "`nOS version $OSVersion : Windows 8/2012 or higher - use Get/Set-SmbServerConfiguration`n"
+  } else {
+    [Boolean]$Win8OrHigher = $false
+    # Windows 7/2008R2 or Vista/2008
+    $Msgs += "`nOS version $OSVersion : Windows 7/2008R2 or lower - check/update registry`n"
+  }
+ 
+  # Check for SMBv1
+  $SMBv1Found = CheckSMBv1 $Win8OrHigher ([ref]$Msgs)
+ 
+  # Disable SMBv1 if requested
+  if ($SMBv1Found) { 
+    if ($DisableSMBv1) { # disable requested
+      if (!(Test-IsAdmin)){
+        $Msgs += 'You specified DisableSMBv1 = $true (the default) but the script was not run with Administrator privileges.' + "`n"
+        $Msgs += "Please re-run as Administrator to disable SMBv1.`n"
+      } else {    
+        DisableSMBv1 $Win8OrHigher ([ref]$Msgs)
+        $Msgs += "Re-check for SMBv1 to confirm that it has been disabled`n"
+        $SMBv1Found = CheckSMBv1 $Win8OrHigher ([ref]$Msgs)
+      }
+    } else {
+      $Msgs += 'Re-run this script with the first parameter = $true to disable SMBv1' + "`n"
+    }
+  }
+ 
+  # Final messages
+  if ($SMBv1Found) { 
+    $ExitCode = 1001 # Raise error in MaxRM dashboard if SMBv1 found
+    # Display final status _first_ to put in first line of MaxRM dashboard
+    if ($DisableSMBv1) { # disable requested
+      $Msgs = "SMBv1 is ENabled on $env:computername. Disable was requested but FAILED.`n" + $Msgs
+    } else {
+      $Msgs = "SMBv1 is ENabled on $env:computername`n" + $Msgs
+    }
+  } else { 
+    $ExitCode = 0   
+    $Msgs = "SMBv1 is NOT enabled on $env:computername`n" + $Msgs
+  }
+}
+ 
+$Msgs += "`nExiting with ExitCode $ExitCode"
+$Msgs # now display messages
+Exit $ExitCode
