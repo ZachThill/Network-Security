@@ -1,4 +1,4 @@
-# Welcome to The Securing Networks GitHub 
+# Welcome to The Network Security GitHub 
 **Owned and Authored by: Zachary Thill - IT Student Project Leader @ RRCC** 
 
 **Below you will see the mission and rules for this GitHub repository** 
