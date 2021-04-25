@@ -8,7 +8,8 @@
    This reprositiry was made in the hopes that anyone wanting a tutorial into Cyber Security can easily access all articles and the sources used to make them. 
    
 # Want to be a Contributor? 
- - Email me @ **zach.thill@comcast.net** to become a GitHub Contributor 
+ - Email me @ **zach.thill@comcast.net** to become a GitHub Contributor today! 
+ **Contributors have access to making articles for all the hungry students looking to learn about anything Security**
 
 # Rules for Contributors  
 Fisrt of all, thank you so much for becoming a contributor and creating articles to better edjucate the next generation, but as we all know, with great power comes great 
