@@ -9,6 +9,7 @@
    
 # Want to be a Contributor? 
  - Email me @ **zach.thill@comcast.net** to become a GitHub Contributor today! 
+ 
  **Contributors have access to making articles for all the hungry students looking to learn about anything Security**
 
 # Rules for Contributors  
